@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  pokemon-app
 //
-//  Created by Bri Testa on 8/16/22.
+//  Created by Liam O'Brien on 8/16/22.
 //
 
 import UIKit
