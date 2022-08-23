@@ -76,22 +76,40 @@ class ViewController: UIViewController {
     }
     
     func getData() {
-        
+        let invalidPokemonAlert = UIAlertController(title: "Invalid Pokemon", message: "You have selected a Pokemon that is not in the Pokedex.", preferredStyle: .alert)
+
         let textFieldInput = textField.text
         
+        let textFieldInputNumber = Int(textField.text!) ?? 0
+        print(textFieldInputNumber)
+
         let urlString = "https://randompokemon.com/sprites/png/normal/"
         
         let urlStringFinal = urlString + textFieldInput! + ".png"
-        
         print(urlStringFinal)
         
-        
-        let url = URL(string: urlStringFinal)!
-        guard let data = try? Data(contentsOf: url) else {
-            return
+        if (textFieldInputNumber >= 906 || textFieldInputNumber < 0)
+        {
+            
+            self.present(invalidPokemonAlert, animated: true, completion: nil)
+            
         }
-        showData.image = UIImage(data: data)
+        
+        else
+        {
+            
+            let url = URL(string: urlStringFinal)!
+            guard let data = try? Data(contentsOf: url) else {
+                return
+            }
+            showData.image = UIImage(data: data)
+            
+        }
+        
+        
     }
+    
+    
 
 }
 
